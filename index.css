@@ -180,6 +180,27 @@ body {
   background-color: #17594a;
 }
 
+.sign-up-wrapper2 {
+  cursor: pointer;
+  /* position: relative; */
+  font-size: 17.23px;
+  font-weight: 300;
+  color: var(--color-white);
+  width: 63.95px;
+  height: 25.58px;
+  /* flex-shrink: 0; */
+  margin-top: 350px;
+  opacity: 1;
+
+  left: 0;
+  border-radius: 6.63px;
+  width: 306.55px;
+  height: 43.69px;
+  align-items: center;
+  background-color: #006cdf;
+}
+
+
 .sign-up-container {
   padding: 8.60546875px 0;
   border-radius: 6.62px 0 0 0;
@@ -281,8 +302,11 @@ body {
   position: relative;
   width: 306.82px;
   height: 461.29px;
-  /* display: flex; */
+  display: flex;
+  /* flex-direction: column-reverse; */
 }
+
+
 
 .laptop-gift-03-1 {
   position: relative;
@@ -297,7 +321,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   border-radius: var(--br-21xl);
-  width:80%;
+  width: 80%;
   min-width: 500px;
   height: auto;
   flex-direction: row;
@@ -326,6 +350,7 @@ body {
 .sign-up-container:hover,
 .log-in-wrapper:hover,
 .sign-up-wrapper:hover,
+.sign-up-wrapper2:hover,
 .frame-wrapper:hover {
   box-shadow: 0 4px 10px #000;
   transition: ease-in 0.2s;
