@@ -25,7 +25,7 @@
 
 .image img {
   width: 45vw;
-  height: 45vh;
+  height: 35vw;
   justify-content: center;
 
 }
@@ -54,6 +54,7 @@ button {
   color: #1a5443;
   font-size: 50px;
 }
+
 
 .fade {
   animation-name: fade;

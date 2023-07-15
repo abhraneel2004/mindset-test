@@ -63,7 +63,7 @@ const botReply = [
     "I don't know actually"
   ],
   ["I am always young."],
-  ["I am Dr.bot", "I am Dr. bot.In Mindset we basically want to be with u in your towards a better you.Here wehave more than  competent psychiatrists and psychotherapists,music therapist,and volunteers also some previously experiwnced personswho had gone through same kinda issues . What are you?"],
+  ["I am Dr.bot", "I am Dr. bot.In Mindset we basically want to be with u in your journey towards a better you.Here wehave more than  competent psychiatrists and psychotherapists,music therapist,and volunteers also some previously experiwnced personswho had gone through same kinda issues . What are you?"],
   ["Anannya Guchait"],
   ["My name is Dr.Bot"],
  
