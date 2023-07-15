@@ -136,13 +136,6 @@
         // The signed-in user info.
         const user = result.user;
 
-        // Sending the data to the database
-        set(ref(database, 'users/' + user.uid), {
-          email: email,
-          password: password,
-          last_login: Date.now()
-        });
-
         alert("Registration successfully!!");
 
         window.location.href = "./HomePage.html";
