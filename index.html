@@ -135,7 +135,18 @@
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        alert("Welcome " + user.displayName);
+
+        // Sending the data to the database
+        set(ref(database, 'users/' + user.uid), {
+          email: email,
+          password: password,
+          last_login: Date.now()
+        });
+
+        alert("Registration successfully!!");
+
+        window.location.href = "./HomePage.html";
+
         console.log(user);
         // ...
       }).catch((error) => {
