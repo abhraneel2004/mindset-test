@@ -167,3 +167,11 @@ adding new css (for obvious reasons🫡)
 	  //----- End
 
 	</script>
+
+
+cse1:
+Tuesday: 4pm
+Wednesday: 1pm
+Thrusday: 4pm
+firday: 5pm
+saturday: 1pm

@@ -283,6 +283,26 @@ body {
   text-align: left;
 }
 
+.sign-up-wrapper2 {
+  cursor: pointer;
+  /* position: relative; */
+  font-size: 17.23px;
+  font-weight: 300;
+  color: var(--color-white);
+  width: 63.95px;
+  height: 25.58px;
+  /* flex-shrink: 0; */
+  margin-top: 350px;
+  opacity: 1;
+
+  left: 0;
+  border-radius: 6.63px;
+  width: 306.55px;
+  height: 43.69px;
+  align-items: center;
+  background-color: #006cdf;
+}
+
 
 .frame-parent31 {
   position: relative;
@@ -337,7 +357,8 @@ body {
 
 .sign-up-frame:hover,
 .log-in-container:hover,
-.log-in-frame:hover {
+.log-in-frame:hover,
+.sign-up-wrapper2:hover{
   box-shadow: 0 4px 10px #000;
   transition: ease-in 0.2s;
 }
