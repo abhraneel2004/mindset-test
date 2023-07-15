@@ -1,14 +1,14 @@
-document.getElementById('chatButton').addEventListener('click', function() {
+document.getElementById('chatButton').addEventListener('click', function () {
   document.getElementById('chatWindow').style.display = 'block';
 });
 
-document.getElementById('closeButton').addEventListener('click', function() {
+document.getElementById('closeButton').addEventListener('click', function () {
   document.getElementById('chatWindow').style.display = 'none';
 });
 const userMessage = [
   ["hi", "hey", "hello"],
   ["sure", "yes", "no"],
-  ["Facing problems","Feeling mentally unwell"],
+  ["Facing problems", "Feeling mentally unwell"],
   ["i am under 18,  below 18"],
   ["18"],
   ["how are you", "how is life", "how are things", "how are you doing"],
@@ -25,7 +25,7 @@ const userMessage = [
     "what is your name",
     "what call yourself"
   ],
- 
+
   ["happy", "good", "fun", "wonderful", "fantastic", "cool", "very good"],
   ["bad", "bored", "tired"],
   ["I can't concentrate over my work?"],
@@ -39,14 +39,14 @@ const userMessage = [
   ["i dont know"],
   ["boring"],
   ["im tired"],
-  ["Say something about Mindset","What is Mindset","Mindset","mindset","Tell me something about mindset"],
-  ["Tell me about the volunteers section","volunteers?"],
-  ["What are the symptoms of mental illness ","Am I mentally fit"],
+  ["Say something about Mindset", "What is Mindset", "Mindset", "mindset", "Tell me something about mindset"],
+  ["Tell me about the volunteers section", "volunteers?"],
+  ["What are the symptoms of mental illness ", "Am I mentally fit"],
 ];
 const botReply = [
   ["Hello!", "Hi!", "Hey!", "Hi there!"],
   ["Okay"],
-  ["ok!Are you under 18?Then say below 18 else say over 18 ","if u are under 18 then say below 18"],
+  ["ok!Are you under 18?Then say below 18 else say over 18 ", "if u are under 18 then say below 18"],
   ["Are you a student or are u having mild issues..if it is then type 18"],
   ["Then I will refer you to the volunteers section"],
   [
@@ -54,7 +54,7 @@ const botReply = [
     "Pretty well, how are you?",
     "Fantastic, how are you?"
   ],
- 
+
 
   [
     "Nothing much",
@@ -66,11 +66,11 @@ const botReply = [
   ["I am Dr.bot", "I am Dr. bot.In Mindset we basically want to be with u in your journey towards a better you.Here wehave more than  competent psychiatrists and psychotherapists,music therapist,and volunteers also some previously experiwnced personswho had gone through same kinda issues . What are you?"],
   ["Anannya Guchait"],
   ["My name is Dr.Bot"],
- 
+
   ["Have you ever felt bad?", "Glad to hear it"],
   ["Why?", "Why? You shouldn't!", "Try watching TV", "Chat with me."],
   ["Ok!first take a deep breath and try again with small steps,if u still find it difficult then take a short break,keep chatting with me"],
- ["Nice to hear"],
+  ["Nice to hear"],
   ["You're welcome"],
   ["Try to eat ghar ka khana but if it is not possible then try out some healthy food and a seasonal fruit is must"],
   ["Dude!"],
@@ -86,9 +86,9 @@ const botReply = [
   ["Examples of signs and symptoms include Feeling sad or down Confused thinking or reduced ability to concentrate Excessive fears or worries, or extreme feelings of guilt Extreme mood changes of highs and lows Withdrawal from friends and activities Significant tiredness, low energy or problems sleeping Detachment from reality (delusions), paranoia or hallucinations Inability to cope with daily problems or stress Trouble understanding and relating to situations and to people Problems with alcohol or drug use Major changes in eating habits Excessive anger, hostility or violence Suicidal thinking Sometimes symptoms of a mental health disorder appear as physical problems, such as stomach pain, back pain, headaches, or other unexplained aches and pains."],
 ];
 
-const alternative = 
-[["I am trying to find out your query"]
-];
+const alternative =
+  [["I am trying to find out your query"]
+  ];
 
 const synth = window.speechSynthesis;
 
