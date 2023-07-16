@@ -59,7 +59,9 @@
         </div>
       </div>
       <p>
-      <h1 class="Mainheading"><b>Mindset</b></h1>
+        <center>
+          <h1 class="Mainheading"><b>Mindset</b></h1>
+        </center>
       </p>
     </nav>
 
@@ -204,13 +206,13 @@
     <div class="image-slideshow">
       <br><br>
       <div class="image fade">
-        <img src="./image/music therapy.png" alt="">
+        <img class = "fadingimg" src="./image/music therapy.png" alt="">
       </div>
       <div class="image fade">
-        <img src="./image/cbt.png" alt="">
+        <img class = "fadingimg" src="./image/cbt.png" alt="">
       </div>
       <div class="image fade">
-        <img src="./image/aba.png" alt="">
+        <img class = "fadingimg" src="./image/aba.png" alt="">
       </div>
       <div class="image fade" id="ct">
         <p>
@@ -349,7 +351,19 @@
     <div id="chatBody">
       <div id="message-section">
         <div class="message" id="bot"><span id="bot-response">Hello.. I'm listening! Go on..</span></div>
+        <div class="message" id="bot"><span id="bot-response">Ok! Are you confused ? plz don't be .I am giving you a
+            brief discussion about several sections in <b><u> mindset</u></b></span></div>
+        <div class="message" id="bot"><span id="bot-response"><b><u>Therapist section:</u></b>here patients or users are
+            referred to the competent Psychiatrists, psychotherapists, music therapists as per their requirement as they
+            are in some advance stages.</span></div>
+        <div class="message" id="bot"><span id="bot-response"><b><u>Volunteers section:</u></b>Now for the volunteers
+            section ;now if the problems are not major or immense then the users can consult the volunteers they are
+            basically MBBS final year students, interns, psychology ,psychiatry interns.</span></div>
+        <div class="message" id="bot"><span id="bot-response">•	In the price and <u><b>“plans and pricing “</b></u>user can get familiar with the packages available</span></div>
+        <div class="message" id="bot"><span id="bot-response"><b>PPD section:</b>Postpartum depression is a dangerous mental health condition which puts affected new mothers at risk of being suicidal . It affects several new mothers in India and is rarely talked about . Most women suffer through depression and anxiety during and after pregnancy believing that it is a part of the process. It is not . Postpartum depression is a dangerous, yet treatable condition, which can put those affected at risk of suicidal behaviour .</span></div>
+
       </div>
+
     </div>
     <div id="chatFooter">
       <div id="input-section">
@@ -359,7 +373,6 @@
         </button>
       </div>
     </div>
-  </div>
   </div>
   <center>
     <div class="row1">
@@ -437,7 +450,9 @@
       email: email,
       password: password
     });
-    localStorage.clear();
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
+
     // alert("Written in database successfully");
   </script>
 
@@ -473,7 +488,7 @@
       signOut(auth).then(() => {
         // Sign-out successful.
         console.log('Sign-out successful.');
-
+        localStorage.clear();
         alert('Sign-out successful.');
         window.location.href = "index.html";
         // document.getElementById('logout').style.display = 'none';

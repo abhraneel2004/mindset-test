@@ -23,6 +23,11 @@
   align-items: center;
 }
 
+.image-slideshow img{
+  width:6vw;
+  height: 5vw;
+}
+
 .image img {
   width: 45vw;
   height: 35vw;
@@ -247,11 +252,7 @@ nav a {
   float: left;
 }
 
-img {
-  width: 1465px;
-  margin-left: 0px;
-  height: 400px;
-}
+
 
 #about {
   height: auto;

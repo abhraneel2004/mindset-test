@@ -46,9 +46,9 @@ a {
   font-size: 30px;
 }
 
-td:hover{
-  background-color:rgb(255, 254, 223);
-  
+td:hover {
+  background-color: rgb(255, 254, 223);
+
 }
 
 #btn1 {
@@ -81,7 +81,8 @@ td:hover{
   opacity: 0.5;
 }
 
-#btn1:hover, #btn2:hover {
+#btn1:hover,
+#btn2:hover {
   box-shadow: 1px 5px 15px #000;
 }
 

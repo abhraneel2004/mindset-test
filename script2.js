@@ -87,7 +87,7 @@ const botReply = [
 ];
 
 const alternative =
-  [["I am trying to find out your query"]
+  [["Sorry, this is not an expected query. Please refer to the above examples for your solution."]
   ];
 
 const synth = window.speechSynthesis;
@@ -146,7 +146,7 @@ function compare(triggerArray, replyArray, string) {
   for (let x = 0; x < triggerArray.length; x++) {
     for (let y = 0; y < replyArray.length; y++) {
       if (triggerArray[x][y] == string) {
-        items = replyArray[x];
+        let items = replyArray[x];
         item = items[Math.floor(Math.random() * items.length)];
       }
     }
