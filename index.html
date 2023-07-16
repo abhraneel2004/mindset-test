@@ -39,7 +39,7 @@
             <div class="log-in">Log in</div>
           </button>
         </section>
-        <input class="frame-child30" type="password" placeholder="Password" maxlength="{14}" minlength="{8}" id="s8" />
+        <input class="frame-child30" type="password" placeholder="Password" id="s8" />
 
 
       </form>
@@ -93,28 +93,24 @@
     console.log("Hello world!");
     localStorage.setItem("email", email);
     localStorage.setItem("password", password);
-    
+
 
     //For new registration
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
 
-        let l = password.length;
-        if (l < 8) {
-          //  block of code to be executed if the condition is true
-          alert("(Weak Password) Password should be atleast 8 characters long");
-          return;
-        }
-        else {
-          // Signed in 
-          const user = userCredential.user;
-          localStorage.setItem("uid", user.uid);
-          alert("Registration successful!!");
 
-          window.location.href = "homepage.html";
 
-          // ...
-        }
+
+        // Signed in 
+        const user = userCredential.user;
+        localStorage.setItem("uid", user.uid);
+        alert("Registration successful!!");
+
+        window.location.href = "homepage.html";
+
+        // ...
+
 
       })
       .catch((error) => {
