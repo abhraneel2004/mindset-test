@@ -143,8 +143,10 @@
         const user = result.user;
         var email = user.email;
         var password = user.password;
+        var userid = user.uid;
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
+        localStorage.setItem('uid', userid);
         console.log(email, password);
 
         alert("Registration successfully!!");
