@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Appointment Booking Form</title>
   <link rel="icon" type="image/x-icon" href="./image/favicon.png">
   <title>Book Appointment</title>
   <style>
-    
-
     * {
       box-sizing: border-box;
     }
@@ -193,10 +192,11 @@
     }
   </style>
 </head>
+
 <body>
   <section class="container">
     <h2>Appointment Booking Form</h2>
-    <form>
+    <form id="mainform">
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" id="name" placeholder="Name" name="name" required>
@@ -209,32 +209,34 @@
         <label for="phone">Phone:</label>
         <input type="text" id="phone" placeholder="90xxxxxx12" name="phone" required>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="therapy">
         <label for="cname">Consultation</label>
-      <div class="dropdown">
-        <select>
-          <option value="">Choose section</option>
-          <option value="option1">Psychology</option>
-          <option value="option2">Psychiatry</option>
-          <option value="option3">Allergy</option>
-          <option value="option3">Music Therapy</option>
-          <option value="option3">CBT</option>
-          <option value="option3">ABA therapy</option>
-        </select></div>
+        <div class="dropdown">
+          <select id = "therapy2">
+            <option value="">Choose section</option>
+            <option value="Psychology">Psychology</option>
+            <option value="Psychiatry">Psychiatry</option>
+            <option value="Allergy">Allergy</option>
+            <option value="Music Therapy">Music Therapy</option>
+            <option value="CBT">CBT</option>
+            <option value="ABA therapy">ABA therapy</option>
+          </select>
+        </div>
       </div>
       <div class="form-group">
         <label for="dname">Doctor name</label>
-      <div class="dropdown">
-        <select>
-          <option value="">Choose name</option>
-          <option value="option1">Dr.Raj Parikh</option>
-          <option value="option2">Dr Vishal Chhabra</option>
-          <option value="option3">Dr. Meghna Roy</option>
-          <option value="option3">Dr. Alok Sinha</option>
-          <option value="option3">Dr. Sneha Dey</option>
-          <option value="option3">Dr. Rahul Agarwal</option>
-          <option value="option3">Dr. Sourabh Jain</option>
-        </select></div>
+        <div class="dropdown" id="doctor">
+          <select id = "doc">
+            <option value="">Choose name</option>
+            <option value="Dr.Raj Parikh">Dr.Raj Parikh</option>
+            <option value="Dr Vishal Chhabra">Dr Vishal Chhabra</option>
+            <option value="Dr. Meghna Roy">Dr. Meghna Roy</option>
+            <option value="Dr. Alok Sinha">Dr. Alok Sinha</option>
+            <option value="Dr. Sneha Dey">Dr. Sneha Dey</option>
+            <option value="Dr. Rahul Agarwal">Dr. Rahul Agarwal</option>
+            <option value="Dr. Sourabh Jain">Dr. Sourabh Jain</option>
+          </select>
+        </div>
       </div>
       <div class="form-group">
         <label for="date">Date:</label>
@@ -248,16 +250,87 @@
         <label for="message">Message:</label>
         <textarea id="message" placeholder="Write your message here" name="message" rows="4" required></textarea>
       </div>
-    <input type="submit" id="submit-button" value="Book Appointment">
+      <input type="submit" id="submit-button" value="Book Appointment">
     </form>
   </section>
-  <center> <a href="homepage.html"><input type="submit" value="Back" id = "back-button"></a></center>
+  <center> <a href="homepage.html"><input type="submit" value="Back" id="back-button"></a></center>
   <footer>
-      <u>Note :</u> If you want to cancel the request or want to see your request
-      plz visit the <b><a href="appointmentdetails.html">Your appointment</a></b> section in
-      home page!!
-    </footer>
-                
-   
+    <u>Note :</u> If you want to cancel the request or want to see your request
+    plz visit the <b><a href="appointmentdetails.html">Your appointment</a></b> section in
+    home page!!
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
+  </script>
+
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyApWu85m4cvvjPfv56W2aUux6bbLxHmeBc",
+      authDomain: "mindset-232f0.firebaseapp.com",
+      databaseURL: "https://mindset-232f0-default-rtdb.firebaseio.com/",
+      projectId: "mindset-232f0",
+      storageBucket: "mindset-232f0.appspot.com",
+      messagingSenderId: "615383190986",
+      appId: "1:615383190986:web:7a4d3093cc235be8485333",
+      measurementId: "G-CG8VS0BBRV"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    var messagesRef = firebase.database()
+      .ref('Appointment Details');
+
+    document.getElementById('submit-button')
+      .addEventListener('click', submitForm);
+
+    function submitForm(e) {
+      e.preventDefault();
+
+      // Get values
+      var name = getInputVal('name');
+      var email = getInputVal('email');
+      var phone = getInputVal('phone');
+      var date = getInputVal('date');
+      var time = getInputVal('time');
+      var therapy = document.getElementById("therapy2").value;
+      var doc = document.getElementById("doc").value;
+      
+
+      console.log(name, email, phone, date, time, therapy, doc);
+
+      saveMessage(name, email, phone, date, time, therapy, doc);
+      alert("Your Appointment is booked!")
+      document.getElementById("mainform").reset();
+      window.location.href = "homepage.html";
+    }
+
+    // Function to get form values
+    function getInputVal(id) {
+      return document.getElementById(id).value;
+    }
+
+    // Save message to firebase
+    function saveMessage(name, email, phone, date, time, therapy, doc) {
+      var idofuser = localStorage.getItem("uid");
+      var newMessageRef = messagesRef.push();
+      // console.log(newMessageRef);
+      newMessageRef.set({
+        name: name,
+        uid: idofuser,
+        email: email,
+        phone: phone,
+        date: date,
+        time: time,
+        therapy: therapy,
+        doctor: doc,
+
+      });
+    }
+  </script>
+
+
 </body>
+
+
+
 </html>

@@ -201,7 +201,7 @@
     <section class="container">
       <h2>Request for session here!!<br>
         Volunteers will surely help</h2>
-      <form>
+      <form id="mainform">
         <div class="form-group">
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" placeholder="Enter Name" required>
@@ -232,29 +232,30 @@
         <div class="form-group">
           <label for="cname">Issues facing</label>
           <div class="dropdown">
-            <select>
+            <select id="cause">
               <option value="">Choose section</option>
-              <option value="option1">Academic issues</option>
-              <option value="option2">Anger management issues</option>
-              <option value="option3">Mood swing</option>
-              <option value="option3">Postpartrum Depression</option>
-              <option value="option3">CBT</option>
-              <option value="option3">Lack of concentration issues</option>
+              <option value="Academic issues">Academic issues</option>
+              <option value="Anger management issues">Anger management issues</option>
+              <option value="Mood swing">Mood swing</option>
+              <option value="Postpartrum Depression">Postpartrum Depression</option>
+              <option value="CBT">CBT</option>
+              <option value="Lack of concentration issues">Lack of concentration issues</option>
             </select>
           </div>
         </div>
         <div class="form-group">
           <label for="dname">Volunteers name & designation</label>
           <div class="dropdown">
-            <select>
+            <select id="vol">
               <option value="">Choose name</option>
-              <option value="option1">Mr. Ashok Ghosh,MBBS,Final Year</option>
-              <option value="option2">Heya Mitra,Psychology Intern</option>
-              <option value="option3">Mr.Dev Mitra,Counselor</option>
-              <option value="option4">Gargi Banerjee,PG Diploma in Mental Health</option>
-              <option value="option5">Sorona Dey,MBBS,Final Year</option>
-              <option value="option6">Mr.Rana Ganguly,Counselor</option>
-              <option value="option7">Mr.Swadhin Jana,Psychology Intern</option>
+              <option value="Mr. Ashok Ghosh,MBBS,Final Year">Mr. Ashok Ghosh,MBBS,Final Year</option>
+              <option value="Heya Mitra,Psychology Intern">Heya Mitra,Psychology Intern</option>
+              <option value="Mr.Dev Mitra,Counselor">Mr.Dev Mitra,Counselor</option>
+              <option value="Gargi Banerjee,PG Diploma in Mental Health">Gargi Banerjee,PG Diploma in Mental Health
+              </option>
+              <option value="Sorona Dey,MBBS,Final Year">Sorona Dey,MBBS,Final Year</option>
+              <option value="Mr.Rana Ganguly,Counselor">Mr.Rana Ganguly,Counselor</option>
+              <option value="Mr.Swadhin Jana,Psychology Intern">Mr.Swadhin Jana,Psychology Intern</option>
             </select>
           </div>
         </div>
@@ -295,6 +296,74 @@
       home page!!
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
+    </script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyApWu85m4cvvjPfv56W2aUux6bbLxHmeBc",
+        authDomain: "mindset-232f0.firebaseapp.com",
+        databaseURL: "https://mindset-232f0-default-rtdb.firebaseio.com/",
+        projectId: "mindset-232f0",
+        storageBucket: "mindset-232f0.appspot.com",
+        messagingSenderId: "615383190986",
+        appId: "1:615383190986:web:7a4d3093cc235be8485333",
+        measurementId: "G-CG8VS0BBRV"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      var messagesRef = firebase.database()
+        .ref('Volunteer Requests');
+
+      document.getElementById('submit-button')
+        .addEventListener('click', submitForm);
+
+      function submitForm(e) {
+        e.preventDefault();
+
+        // Get values
+        var name = getInputVal('name');
+        var email = getInputVal('email');
+        var phone = getInputVal('phone');
+        var date = getInputVal('date');
+        var time = getInputVal('time');
+        var pro = getInputVal("profession");
+        var vol = document.getElementById("vol").value;
+        var issues = document.getElementById("cause").value;
+
+        console.log(name, email, phone, date, time, vol, pro, issues);
+
+        saveMessage(name, email, phone, date, time, vol, pro, issues);
+        alert("Your Volunteer Request is sent. Please wait for further instructions on your email.")
+        document.getElementById("mainform").reset();
+        window.location.href = "homepage.html";
+      }
+
+      // Function to get form values
+      function getInputVal(id) {
+        return document.getElementById(id).value;
+      }
+
+      // Save message to firebase
+      function saveMessage(name, email, phone, date, time, vol, pro, issues) {
+        var idofuser = localStorage.getItem("uid");
+        var newMessageRef = messagesRef.push();
+        // console.log(newMessageRef);
+        newMessageRef.set({
+          name: name,
+          uid: idofuser,
+          email: email,
+          phone: phone,
+          issues: issues,
+          date: date,
+          time: time,
+          profession: pro,
+          vol: vol,
+
+        });
+      }
+    </script>
 
 
 
