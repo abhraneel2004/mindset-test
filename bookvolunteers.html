@@ -314,7 +314,7 @@
       firebase.initializeApp(firebaseConfig);
 
       var messagesRef = firebase.database()
-        .ref('Volunteer Requests');
+        .ref('Volunteer Requests/'+localStorage.getItem("uid"));
 
       document.getElementById('submit-button')
         .addEventListener('click', submitForm);
@@ -350,7 +350,7 @@
         var idofuser = localStorage.getItem("uid");
         var newMessageRef = messagesRef.push();
         // console.log(newMessageRef);
-        newMessageRef.set({
+        messagesRef.set({
           name: name,
           uid: idofuser,
           email: email,

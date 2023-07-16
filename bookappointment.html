@@ -278,7 +278,7 @@
     firebase.initializeApp(firebaseConfig);
 
     var messagesRef = firebase.database()
-      .ref('Appointment Details');
+      .ref('Appointment Details'+ localStorage.getItem("uid"));
 
     document.getElementById('submit-button')
       .addEventListener('click', submitForm);
@@ -312,9 +312,8 @@
     // Save message to firebase
     function saveMessage(name, email, phone, date, time, therapy, doc) {
       var idofuser = localStorage.getItem("uid");
-      var newMessageRef = messagesRef.push();
       // console.log(newMessageRef);
-      newMessageRef.set({
+      messagesRef.set({
         name: name,
         uid: idofuser,
         email: email,
