@@ -314,7 +314,7 @@
       firebase.initializeApp(firebaseConfig);
 
       var messagesRef = firebase.database()
-        .ref('Volunteer Requests/'+localStorage.getItem("uid"));
+        .ref('Volunteer Requests/' + localStorage.getItem("uid"));
 
       document.getElementById('submit-button')
         .addEventListener('click', submitForm);

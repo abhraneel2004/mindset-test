@@ -26,34 +26,10 @@
           <th>Doctor name</th>
           <th>Date</th>
           <th>Time</th>
-          <th>Message</th>
-          <th>Action</th>
         </tr>
       </thead>
       <tbody>
 
-        <tr>
-          <td>Anannya Guchait</td>
-          <td>anannyaguchait72@gmail.com</td>
-          <td>9903268994</td>
-          <td>Allergy</td>
-          <td>Dr. Rahul Agarwal</td>
-          <td>28.07.23</td>
-          <td>10:00 am</td>
-          <td>Doc!! plz help</td>
-          <td><button class="cancelButton">Cancel</button></td>
-
-        </tr>
-        <td>Anannya Guchait</td>
-        <td>anannyaguchait72@gmail.com</td>
-        <td>9903268994</td>
-        <td>Allergy</td>
-        <td>Dr. Rahul Agarwal</td>
-        <td>07.08.23</td>
-        <td>10:00 am</td>
-        <td>Better than before!!</td>
-        <td><button class="cancelButton">Cancel</button></td>
-        </tr>
       </tbody>
     </table>
 
@@ -67,6 +43,59 @@
 
 
   <script src="app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
+  </script>
+
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyApWu85m4cvvjPfv56W2aUux6bbLxHmeBc",
+      authDomain: "mindset-232f0.firebaseapp.com",
+      databaseURL: "https://mindset-232f0-default-rtdb.firebaseio.com/",
+      projectId: "mindset-232f0",
+      storageBucket: "mindset-232f0.appspot.com",
+      messagingSenderId: "615383190986",
+      appId: "1:615383190986:web:7a4d3093cc235be8485333",
+      measurementId: "G-CG8VS0BBRV"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    var id = localStorage.getItem("uid");
+    const dbRef = firebase.database().ref('/Appointment Details/' + id);
+    alert("To cancel your Appointment, please send an email to service@mindset.com");
+    dbRef.once("value").then((snapshot) => {
+      var data = snapshot.val();
+      for (let i in data) {
+        console.log(i);
+        console.log(data[i]);
+      }
+      var date = data["date"];
+      var email = data["email"];
+      var doctor = data["doctor"];
+      var name = data["name"];
+      var phone = data["phone"];
+      var therapy = data["therapy"];
+      var time = data["time"];
+
+      let table = document.querySelector("table");
+
+      let template = `
+        <tr>
+          <td>${name}</td>
+          <td>${email}</td>
+          <td>${phone}</td>
+          <td>${therapy}</td>
+          <td>${doctor}</td>
+          <td>${date}</td>
+          <td>${time}</td>
+        </tr>`;
+      table.innerHTML += template
+    });
+      // Get values
+
+
+
+  </script>
 </body>
 
 </html>

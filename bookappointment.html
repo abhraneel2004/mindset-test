@@ -278,7 +278,7 @@
     firebase.initializeApp(firebaseConfig);
 
     var messagesRef = firebase.database()
-      .ref('Appointment Details'+ localStorage.getItem("uid"));
+      .ref('Appointment Details/'+ localStorage.getItem("uid"));
 
     document.getElementById('submit-button')
       .addEventListener('click', submitForm);
