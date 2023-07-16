@@ -178,7 +178,7 @@ function containMessageCheck(string) {
   let item;
   for (let x = 0; x < expectedMessage.length; x++) {
     if (expectedMessage[x].includes(string)) {
-      items = expectedReply[x];
+      let items = expectedReply[x];
       item = items[Math.floor(Math.random() * items.length)];
     }
   }

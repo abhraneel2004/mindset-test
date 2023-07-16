@@ -51,12 +51,16 @@
 </body>
 <!-- ------------------------------------------------------------------------------
   ------------------------------------------------------------------------------ -->
+
+<!-- <script src="https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js"></script> -->
+
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
   import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+  // import "https://www.gstatic.com/firebasejs/9.11.0/firebase.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -65,7 +69,6 @@
   const firebaseConfig = {
     apiKey: "AIzaSyApWu85m4cvvjPfv56W2aUux6bbLxHmeBc",
     authDomain: "mindset-232f0.firebaseapp.com",
-    // databaseURL: "https://mindset-232f0-default-rtdb.firebaseio.com",
     databaseURL: "https://mindset-232f0-default-rtdb.firebaseio.com/",
     projectId: "mindset-232f0",
     storageBucket: "mindset-232f0.appspot.com",
@@ -89,6 +92,9 @@
     var email = document.getElementById("s7").value;
     var password = document.getElementById("s8").value;
     console.log("Hello world!");
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
+
     //For new registration
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -96,21 +102,20 @@
         let l = password.length;
         if (l < 8) {
           //  block of code to be executed if the condition is true
-          alert("Password must be 8 characters long");
+          alert("(Weak Password) Password should be atleast 8 characters long");
           return;
         }
         else {
           // Signed in 
           const user = userCredential.user;
 
-          const database = getDatabase();
-          // Sending the data to the database
-          var datausers = {
+
+          const db = getDatabase(app);
+          set(ref(db, 'users/' + user.uid), {
             email: email,
             password: password,
             last_login: Date.now()
-          }
-          set(ref(database, 'users/' + user.uid), datausers);
+          });
 
           alert("Registration successful!!");
 
@@ -148,6 +153,11 @@
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+        var email = user.email;
+        var password = user.password;
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
+        console.log(email, password);
 
         alert("Registration successfully!!");
 
